@@ -1,0 +1,135 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-crimson: var(--crimson);
+  --color-electric: var(--electric);
+
+  --font-display: "Chakra Petch", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Manrope", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  --ink: oklch(0.12 0.01 260);
+  --navy: oklch(0.18 0.04 262);
+  --crimson: oklch(0.6 0.24 25);
+  --electric: oklch(0.68 0.19 245);
+
+  --background: oklch(0.11 0.012 262);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.15 0.02 262);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.15 0.02 262);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: var(--crimson);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: var(--electric);
+  --secondary-foreground: oklch(0.1 0.02 262);
+  --muted: oklch(0.2 0.02 262);
+  --muted-foreground: oklch(0.7 0.02 255);
+  --accent: oklch(0.22 0.04 262);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: var(--crimson);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.03 262);
+  --input: oklch(0.3 0.03 262);
+  --ring: var(--electric);
+
+  --glow-red: 0 0 24px color-mix(in oklab, var(--crimson) 60%, transparent);
+  --glow-red-strong: 0 0 48px color-mix(in oklab, var(--crimson) 85%, transparent);
+  --glow-blue: 0 0 24px color-mix(in oklab, var(--electric) 55%, transparent);
+  --shadow-comic: 6px 6px 0 0 oklch(0 0 0);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--crimson); color: white; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@utility halftone {
+  background-image: radial-gradient(color-mix(in oklab, var(--foreground) 14%, transparent) 1px, transparent 1.4px);
+  background-size: 6px 6px;
+}
+@utility halftone-red {
+  background-image: radial-gradient(color-mix(in oklab, var(--crimson) 45%, transparent) 1.2px, transparent 1.6px);
+  background-size: 7px 7px;
+}
+@utility halftone-blue {
+  background-image: radial-gradient(color-mix(in oklab, var(--electric) 40%, transparent) 1.2px, transparent 1.6px);
+  background-size: 7px 7px;
+}
+@utility comic-frame {
+  border: 3px solid var(--foreground);
+  box-shadow: var(--shadow-comic);
+}
+@utility glow-red { box-shadow: var(--glow-red); }
+@utility glow-blue { box-shadow: var(--glow-blue); }
+@utility text-glow-red { text-shadow: 0 0 18px color-mix(in oklab, var(--crimson) 70%, transparent); }
+@utility text-glow-blue { text-shadow: 0 0 18px color-mix(in oklab, var(--electric) 70%, transparent); }
+@utility text-offset {
+  text-shadow: 3px 0 0 var(--crimson), -3px 0 0 var(--electric);
+}
+@utility terminal {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility scanlines {
+  background-image: repeating-linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 0 1px, transparent 1px 3px);
+}
+
+@keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes glitch {
+  0%, 92%, 100% { transform: translate(0); clip-path: none; }
+  93% { transform: translate(-3px, 1px); clip-path: inset(10% 0 60% 0); }
+  95% { transform: translate(3px, -1px); clip-path: inset(50% 0 20% 0); }
+  97% { transform: translate(-1px, 0); }
+}
+@keyframes dash { to { stroke-dashoffset: 0; } }
+@keyframes drift { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-120px); opacity: 0; } }
+
+@utility animate-scan { animation: scan 2.2s linear infinite; }
+@utility animate-blink { animation: blink 1s steps(1) infinite; }
+@utility animate-glitch { animation: glitch 5s infinite; }
+@utility animate-drift { animation: drift 6s linear infinite; }

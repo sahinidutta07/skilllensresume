@@ -1,16 +1,26 @@
-# React + Vite
+# Pixel Perfect Pixels
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Implement exactly the screenshot and nothing else
 
-Currently, two official plugins are available:
+This project was built with [Lovable](https://lovable.dev).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live app**: https://skillensfrontend.lovable.app
 
-## React Compiler
+## Build with Lovable
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d57f46dd-f7da-4c1e-a515-9dc17d9b36e8).
 
-## Expanding the Oxlint configuration
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
+```
