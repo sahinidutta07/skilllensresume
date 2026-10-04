@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: skilllens-api
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend app:app
+
